@@ -1,0 +1,10 @@
+# directories
+**/bin/
+**/obj/
+**/out/
+**/sql/
+
+# files
+Dockerfile*
+**/*.md
+app.db

@@ -1,0 +1,17 @@
+FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
+ARG ConnectionString=default_connection_string
+ENV ConnectionString=$ConnectionString
+WORKDIR /app
+COPY . .
+RUN ["dotnet", "restore"]
+RUN ["dotnet", "build"]
+RUN chmod +x ./entrypoint.sh
+FROM build AS publish
+RUN ["dotnet", "publish", "app.csproj", "-c", "Release", "-o", "/app" ]
+FROM publish AS final
+ENV ASPNETCORE_URLS=http://+:80  
+EXPOSE 80
+WORKDIR /app
+COPY --from=publish /app/entrypoint.sh .
+COPY --from=publish /app .
+ENTRYPOINT ./entrypoint.sh ${ConnectionString}
