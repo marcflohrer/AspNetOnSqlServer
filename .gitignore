@@ -32,5 +32,6 @@ msbuild.wrn
 
 # Visual Studio 2015
 .vs/
+mssql/
 
 .env

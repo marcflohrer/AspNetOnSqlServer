@@ -19,10 +19,8 @@ services:
             - "1434:1434" 
             - "1431:1431"
         volumes:
-            - ./sql/data:/var/opt/mssql/data:rw
-            - ./sql/logs:/var/opt/mssql/log:rw
+            - ./mssql/data:/var/opt/mssql/data:rw
+            - ./mssql/logs:/var/opt/mssql/log:rw
         environment:
             SA_PASSWORD: ${DatabasePassword}
             ACCEPT_EULA: "Y"
-
-
