@@ -21,7 +21,7 @@ sleep 1
 done
 
 >&2 echo "!!!11!!!!!!11!!!!!!11!!!!!!11!!!!!!11!!!1!!!!!!11!!!!!"
->&2 echo "Running entrypoint.sh :: 1 SECRETS SET UP  !!!!!!!11!!!!!"
+>&2 echo "Running entrypoint.sh :: SECRETS ARE SET UP !!!!!!!11!"
 >&2 echo "!!!11!!!!!!11!!!!!!11!!!!!!11!!!!!!11!!!1!!!!!!11!!!!!"
 
 >&2 echo "Building the project ..."
@@ -31,13 +31,22 @@ sleep 1
 done
 
 >&2 echo "!!!11!!!!!!11!!!!!!11!!!!!!11!!!!!!11!!!1!!!!!!11!!!!!"
->&2 echo "Running entrypoint.sh :: 1 BUILD DONE !!!!!!!!!!!!!!11"
+>&2 echo "Running entrypoint.sh :: BUILD DONE !!!!!!!!!!!!!!!!11"
 >&2 echo "!!!11!!!!!!11!!!!!!11!!!!!!11!!!!!!11!!!1!!!!!!11!!!!!"
 
 until dotnet ef database update; do
 >&2 echo "SQL Server is starting up"
 sleep 1
 done
+
+until dotnet ef database update; do
+>&2 echo "SQL Server is starting up"
+sleep 1
+done
+
+>&2 echo "!!!11!!!!!!11!!!!!!11!!!!!!11!!!!!!11!!!1!!!!!!11!!!!!"
+>&2 echo "Running entrypoint.sh :: MS SQL DB RUNNING !!!!!!!!!11"
+>&2 echo "!!!11!!!!!!11!!!!!!11!!!!!!11!!!!!!11!!!1!!!!!!11!!!!!"
 
 >&2 echo "SQL Server is up - starting scaffolding ..."
 until dotnet ef dbcontext scaffold Name=ConnectionStrings:AspNetCoreOnSqlServerConnectionString Microsoft.EntityFrameworkCore.SqlServer -o DbModels -f; do

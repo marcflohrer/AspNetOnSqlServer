@@ -31,7 +31,7 @@
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
-  <h3 align="center">SQL Server on Linux + ASP.NET Core app demo</h3>
+  <h3 align="center">SQL Server on Linux + ASP.NET 5.0 app demo</h3>
 
   <p align="center">
     <br />
@@ -86,6 +86,7 @@ This section should list any major frameworks that you built your project using.
 * [docker](https://docs.docker.com/)
 * [Asp.net](https://dotnet.microsoft.com/apps/aspnet)
 * [SQL Server on Linux](https://docs.microsoft.com/en-us/sql/linux/sql-server-linux-overview?view=sql-server-ver15)
+* [SQL Server on Linux + ASP.NET Core app demo](https://github.com/twright-msft/mssql-aspnet-docker-demo-app)
 
 <!-- GETTING STARTED -->
 ## Getting Started
