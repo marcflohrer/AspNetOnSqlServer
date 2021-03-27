@@ -84,7 +84,7 @@ This section should list any major frameworks that you built your project using.
 * [docker](https://docs.docker.com/)
 * [Asp.net](https://dotnet.microsoft.com/apps/aspnet)
 * [SQL Server on Linux](https://docs.microsoft.com/en-us/sql/linux/sql-server-linux-overview?view=sql-server-ver15)
-* [SQL Server on Linux + ASP.NET Core app demo](https://github.com/twright-msft/mssql-aspnet-docker-demo-app)
+* [aspnetcore/src/Identity/samples/IdentitySample.Mvc/](https://github.com/dotnet/aspnetcore/tree/main/src/Identity/samples/IdentitySample.Mvc)
 
 <!-- GETTING STARTED -->
 ## Getting Started
