@@ -6,7 +6,8 @@ services:
                 ConnectionString: "Server=db;Database=master;User=sa;Password=${DatabasePassword};"
             context: .      
         ports:
-            - "80:80"
+            - "80:6003"
+            - "443:6004"
         volumes:
             - ./web/root/.aspnet/DataProtection-Keys:/root/.aspnet/DataProtection-Keys:rw            
         depends_on:
