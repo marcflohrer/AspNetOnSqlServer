@@ -7,8 +7,10 @@ services:
             context: .      
         ports:
             - "80:80"
+        volumes:
+            - ./web/root/.aspnet/DataProtection-Keys:/root/.aspnet/DataProtection-Keys:rw            
         depends_on:
-            - db           
+            - db
     db:
         image: "mcr.microsoft.com/mssql/server:2019-latest"
         ports:
