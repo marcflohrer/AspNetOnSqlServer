@@ -16,6 +16,6 @@ WORKDIR /app
 
 COPY --from=publish /app/entrypoint.sh .
 COPY --from=publish /app .
-# COPY --from=publish /app/etc/ssl/openssl.cnf /etc/ssl/openssl.cnf
+COPY --from=publish /app/etc/ssl/openssl.cnf /etc/ssl/openssl.cnf
 
 ENTRYPOINT ./entrypoint.sh ${ConnectionString}
