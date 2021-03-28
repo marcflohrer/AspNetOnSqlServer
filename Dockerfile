@@ -1,7 +1,6 @@
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 ARG ConnectionString=default_connection_string
 ENV ConnectionString=$ConnectionString
-RUN echo $ConnectionString
 WORKDIR /app
 COPY . .
 RUN ["dotnet", "restore"]
