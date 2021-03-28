@@ -1,7 +1,8 @@
 #!/bin/bash
 . .env
+cd mssql/logs/ && find . ! -name . -prune ! -name ../Models -exec rm {} \; && cd ../..
 dotnet user-secrets init
-dotnet user-secrets set ConnectionStrings:DefaultConnection "Server=db;Database=master;User=sa;Password=${DatabasePassword};" --project .
-dotnet user-secrets set ConnectionString "Server=db;Database=master;User=sa;Password=${DatabasePassword};" --project .
 dotnet user-secrets set DatabasePassword "${DatabasePassword}" --project .
 docker-compose up --build --remove-orphans
+dotnet user-secrets remove "DatabasePassword"
+cd mssql/logs/ && find . ! -name . -prune ! -name ../Models -exec rm {} \; && cd ../..

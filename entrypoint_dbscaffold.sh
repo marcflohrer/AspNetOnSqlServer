@@ -15,7 +15,9 @@ until dotnet tool install --global dotnet-ef; do
 sleep 1
 done
 
-until dotnet user-secrets init && dotnet user-secrets set ConnectionStrings:DefaultConnection "Server=db;Database=master;User=sa;Password=$1;" --project .; do
+ConnectionStringName="ConnectionStrings:DefaultConnection"
+
+until dotnet user-secrets init && dotnet user-secrets set "${ConnectionStringName}" "Server=db;Database=master;User=sa;Password=$1;" --project .; do
 >&2 echo "Setting up user secret: " $1
 sleep 1
 done
@@ -39,17 +41,11 @@ until dotnet ef database update; do
 sleep 1
 done
 
-until dotnet ef database update; do
->&2 echo "SQL Server is starting up"
-sleep 1
-done
 
 >&2 echo "!!!11!!!!!!11!!!!!!11!!!!!!11!!!!!!11!!!1!!!!!!11!!!!!"
 >&2 echo "Running entrypoint.sh :: MS SQL DB RUNNING !!!!!!!!!11"
 >&2 echo "!!!11!!!!!!11!!!!!!11!!!!!!11!!!!!!11!!!1!!!!!!11!!!!!"
 
 >&2 echo "SQL Server is up - starting scaffolding ..."
-until dotnet ef dbcontext scaffold Name=ConnectionStrings:DefaultConnection Microsoft.EntityFrameworkCore.SqlServer -o DbModels -f; do
->&2 echo "Scaffolding the database..."
-sleep 1
-done
+dotnet user-secrets init && dotnet user-secrets set "${ConnectionStringName}" "Server=db;Database=master;User=sa;Password=$1;"
+dotnet ef dbcontext scaffold Name="${ConnectionStringName}" Microsoft.EntityFrameworkCore.SqlServer -o DbModels -f
