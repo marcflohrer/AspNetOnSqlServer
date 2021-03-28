@@ -78,7 +78,7 @@ When starting a new side project this boiler plate code takes unnecessarily a lo
 
 ### Built With
 
-This section should list any major frameworks that you built your project using. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
+This section lists major frameworks and projects that were used:
 
 * [docker-compose](https://docs.docker.com/compose/)
 * [docker](https://docs.docker.com/)
@@ -99,6 +99,12 @@ To start up the app run
 
   ```sh
   startup-app.sh
+  ```
+
+To adjust the database structure to the database description in the project:
+
+  ```sh
+  start-dbmigrating.sh
   ```
 
 To reverse engineer the database structure run
