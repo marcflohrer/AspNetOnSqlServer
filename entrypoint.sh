@@ -1,52 +1,32 @@
 
 #!/bin/bash
 
-set -e
-
-run_cmd="dotnet app.dll"
+set -ex
 
 >&2 echo "!!!11!!!!!!11!!!!!!11!!!!!!11!!!!!!11!!!"
 >&2 echo "Running entrypoint.sh !!!11!!!!!!11!!!!!"
 >&2 echo "!!!11!!!!!!11!!!!!!11!!!!!!11!!!!!!11!!!"
 
-until PATH="$PATH:/root/.dotnet/tools"; do
->&2 echo "Setting up env variables..."
+apt-get update && apt-get install wget -y
+
+until wget https://packages.microsoft.com/config/debian/10/packages-microsoft-prod.deb -O packages-microsoft-prod.deb; do 
+>&2 echo "downloading packages-microsoft-prod..."
 sleep 1
 done
 
->&2 echo "!!!11!!!!!!11!!!!!!11!!!!!!11!!!!!!11!!!1!!!!!!11!!!!!"
->&2 echo "Running entrypoint.sh :: PATH IS SET!!!11!!!!!!11!!!!!"
->&2 echo "!!!11!!!!!!11!!!!!!11!!!!!!11!!!!!!11!!!1!!!!!!11!!!!!"
+apt-get remove wget -y
 
-until dotnet tool install --global dotnet-ef; do
->&2 echo "EntityFramework is installing..."
+dpkg -i packages-microsoft-prod.deb
+apt-get update; \
+  apt-get install -y apt-transport-https && \
+  apt-get update && \
+  apt-get install -y dotnet-sdk-5.0
+
+until dotnet dev-certs https; do
+>&2 echo "Setting up developer certificate..."
 sleep 1
 done
 
->&2 echo "!!!11!!!!!!11!!!!!!11!!!!!!11!!!!!!11!!!1!!!!!!11!!!!!"
->&2 echo "Running entrypoint.sh :: EF IS INSTALLED !!!!!!11!!!!!"
->&2 echo "!!!11!!!!!!11!!!!!!11!!!!!!11!!!!!!11!!!1!!!!!!11!!!!!"
-
-until dotnet user-secrets init && dotnet user-secrets set ConnectionStrings:DefaultConnection "Server=db;Database=master;User=sa;Password=$1;" --project .; do
->&2 echo "Setting up user secret: " $1
-sleep 1
-done
-
->&2 echo "!!!11!!!!!!11!!!!!!11!!!!!!11!!!!!!11!!!1!!!!!!11!!!!!"
->&2 echo "Running entrypoint.sh :: 0 SECRETS SET UP $0 !!!!!!!11!!!!!"
->&2 echo "Running entrypoint.sh :: 1 SECRETS SET UP $1 !!!!!!!11!!!!!"
->&2 echo "!!!11!!!!!!11!!!!!!11!!!!!!11!!!!!!11!!!1!!!!!!11!!!!!"
-
-until dotnet ef database update; do
->&2 echo "SQL Server is starting up"
-sleep 1
-done
-
->&2 echo "!!!11!!!!!!11!!!!!!11!!!!!!11!!!!!!11!!!1!!!!!!11!!!!!"
->&2 echo "Running entrypoint.sh :: SQL IS RUNNING !!!!!!!11!!!!!"
->&2 echo "!!!11!!!!!!11!!!!!!11!!!!!!11!!!!!!11!!!1!!!!!!11!!!!!"
-
->&2 echo "SQL Server is up - starting the app next..."
 until dotnet app.dll; do
 >&2 echo "Starting up the app..."
 sleep 1

@@ -2,10 +2,11 @@
 **/bin/
 **/obj/
 **/out/
-**/sql/
+**/mssql/
 
 # files
 Dockerfile*
+*.md
 **/*.md
 app.db
 .env

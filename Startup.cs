@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using System;
 
 namespace app
 {
@@ -31,10 +32,14 @@ namespace app
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var connection = Configuration.GetConnectionString("DefaultConnection") ?? Configuration["DefaultConnection"];
+            if(connection == null){
+                throw new Exception("Database connetion is not set.");
+            }
             // Add framework services.
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.ConfigureWarnings(b => b.Log(CoreEventId.ManyServiceProvidersCreatedWarning))
-                    .UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+                    .UseSqlServer(connection));
 
             services.AddMvc();
 
