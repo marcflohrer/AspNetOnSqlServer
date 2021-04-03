@@ -78,8 +78,9 @@ When starting a new side project this boiler plate code takes unnecessarily a lo
 
 ### Built With
 
-This section lists major frameworks and projects that were used:
+This section lists major frameworks, projects, tools and templates that were used:
 
+* [brew](https://brew.sh/)
 * [docker-compose](https://docs.docker.com/compose/)
 * [docker](https://docs.docker.com/)
 * [Asp.net](https://dotnet.microsoft.com/apps/aspnet)
@@ -115,29 +116,35 @@ To reverse engineer the database structure run
 
 ### Prerequisites
 
-You need docker and docker-compose on the machine where you want to run the application:
-
-* docker
+* This repository is only tested on macOS. It will work on windows with some modifications, though.
+* You need [docker](https://www.docker.com/products/docker-desktop)
+* You need [docker-compose](https://docs.docker.com/compose/install/)
 
 ### Installation
 
-1. Clone the repo:
+1. Clone this repo:
 
    ```sh
-   git clone https://github.com/your_username_/Project-Name.git
+   git clone https://github.com/marcflohrer/AspNetOnSqlServer.git
    ```
 
-2. Install docker:
+2. Install docker and docker-compose using [brew](https://brew.sh/):
 
    ```sh
    brew install docker docker-compose docker-machine xhyve docker-machine-driver-xhyve
    ```
 
-3. Start the app:
+3. On the first run first initialize the database. Once the terminal output shows 'Migration is done. Close the container using key stroke CTRL+Z...' the migration is done. Then stop the container.
 
-  ```sh
-  startup-app.sh
-  ```
+   ```sh
+   start-dbmigrating.sh
+   ```
+
+4. Start the app.
+
+   ```sh
+   startup-app.sh
+   ```
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->

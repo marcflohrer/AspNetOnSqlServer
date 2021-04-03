@@ -48,7 +48,7 @@ done
 
 >&2 echo "SQL Server is up - starting my-demo-app next..."
 until dotnet my-demo-app.dll; do
->&2 echo "Starting up my-demo-app..."
+>&2 echo "Migration is done. Close the container using key stroke CTRL+Z..."
 sleep 1
 done
 
