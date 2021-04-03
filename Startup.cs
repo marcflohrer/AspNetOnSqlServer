@@ -1,5 +1,5 @@
-using app.Models;
-using app.Services;
+using MyDemoApp.Models;
+using MyDemoApp.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -11,7 +11,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using System;
 
-namespace app
+namespace MyDemoApp
 {
     public class Startup
     {

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Identity;
 
-namespace app.Models.ManageViewModels
+namespace MyDemoApp.Models.ManageViewModels
 {
     public class IndexViewModel
     {

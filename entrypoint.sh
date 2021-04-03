@@ -6,43 +6,24 @@ set -ex
 >&2 echo "Running entrypoint.sh !!!11!!!!!!11!!!!!"
 >&2 echo "!!!11!!!!!!11!!!!!!11!!!!!!11!!!!!!11!!!"
 
-apt-get update && apt-get install wget -y
-
-until wget https://packages.microsoft.com/config/debian/10/packages-microsoft-prod.deb -O packages-microsoft-prod.deb; do 
->&2 echo "downloading packages-microsoft-prod..."
-sleep 1
-done
-
-apt-get remove wget -y
-
-dpkg -i packages-microsoft-prod.deb
-apt-get update; \
-  apt-get install -y apt-transport-https && \
-  apt-get update && \
-  apt-get install -y dotnet-sdk-5.0
-
-until dotnet dev-certs https; do
->&2 echo "Setting up developer certificate..."
-sleep 1
-done
+apk update && apk add wget && \
+  apk add bash icu-libs krb5-libs libgcc libintl libssl1.1 libstdc++ zlib && \
+  apk add libgdiplus --repository https://dl-3.alpinelinux.org/alpine/edge/testing/ && \
+  wget https://dot.net/v1/dotnet-install.sh && \
+  chmod +x ./dotnet-install.sh && \
+  /bin/bash -c "./dotnet-install.sh -c 5.0" && \
+  export PATH="$PATH:/root/.dotnet/" && \
+  cd /root/.dotnet/ && \
+  chmod +x dotnet && \
+  dotnet dev-certs https && \
+  cd /app
 
 until dotnet user-secrets init && dotnet user-secrets set ConnectionStrings:DefaultConnection "$1" --project .; do
 >&2 echo "Setting up user secret: " $1
 sleep 1
 done
 
-apt-get update; \
-  apt-get install -y apt-transport-https && \
-  apt-get update && \
-  apt-get remove -y dotnet-sdk-5.0 && \
-  apt-get remove -y aspnetcore-targeting-pack-5.0 && \
-  apt-get remove -y dotnet-apphost-pack-5.0 && \
-  apt-get clean
-
-until dotnet app.dll; do
->&2 echo "Starting up the app..."
-sleep 1
-done
+./my-demo-app
 
 >&2 echo "!!!11!!!!!!11!!!!!!11!!!!!!11!!!!!!11!!!1!!!!!!11!!!!!"
 >&2 echo "Running entrypoint.sh :: APP RUNNING !!!!!!!!!!11!!!!!"

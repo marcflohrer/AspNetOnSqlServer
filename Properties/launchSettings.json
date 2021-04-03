@@ -4,7 +4,7 @@
     "anonymousAuthentication": true
   },
   "profiles": {
-    "app": {
+    "my-demo-app": {
       "commandName": "Project",
       "launchBrowser": true,
       "applicationUrl": "http://localhost:6003",

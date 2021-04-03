@@ -1,6 +1,6 @@
 using System.Threading.Tasks;
 
-namespace app
+namespace MyDemoApp
 {
     public static class MessageServices
     {

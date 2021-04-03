@@ -8,5 +8,5 @@
 Dockerfile*
 *.md
 **/*.md
-app.db
+my-demo-app.db
 .env

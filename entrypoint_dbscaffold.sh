@@ -3,8 +3,6 @@
 
 set -e
 
-run_cmd="dotnet app.dll"
-
 until PATH="$PATH:/root/.dotnet/tools"; do
 >&2 echo "Setting up env variables..."
 sleep 1

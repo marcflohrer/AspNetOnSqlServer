@@ -3,7 +3,7 @@
 
 set -e
 
-run_cmd="dotnet app.dll"
+run_cmd="dotnet my-demo-app.dll"
 
 >&2 echo "!!!11!!!!!!11!!!!!!11!!!!!!11!!!!!!11!!!"
 >&2 echo "Running entrypoint.sh !!!11!!!!!!11!!!!!"
@@ -46,9 +46,9 @@ done
 >&2 echo "Running entrypoint.sh :: SQL IS RUNNING !!!!!!!11!!!!!"
 >&2 echo "!!!11!!!!!!11!!!!!!11!!!!!!11!!!!!!11!!!1!!!!!!11!!!!!"
 
->&2 echo "SQL Server is up - starting the app next..."
-until dotnet app.dll; do
->&2 echo "Starting up the app..."
+>&2 echo "SQL Server is up - starting my-demo-app next..."
+until dotnet my-demo-app.dll; do
+>&2 echo "Starting up my-demo-app..."
 sleep 1
 done
 

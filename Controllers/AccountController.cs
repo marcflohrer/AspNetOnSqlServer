@@ -1,16 +1,16 @@
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using app.Models.AccountViewModels;
-using app.Models;
-using app.Services;
+using MyDemoApp.Models.AccountViewModels;
+using MyDemoApp.Models;
+using MyDemoApp.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Logging;
 
-namespace app.Controllers
+namespace MyDemoApp.Controllers
 {
     [Authorize]
     public class AccountController : Controller

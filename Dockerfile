@@ -3,12 +3,14 @@ ARG ConnectionString=default_connection_string
 ENV ConnectionString=$ConnectionString
 WORKDIR /app
 COPY . .
-RUN ["dotnet", "restore"]
-RUN ["dotnet", "build"]
+RUN dotnet restore 
+RUN dotnet build --runtime linux-musl-x64 my-demo-app.csproj
 RUN chmod +x ./entrypoint.sh
 FROM build AS publish
-RUN ["dotnet", "publish", "app.csproj", "-c", "Release", "-o", "/app" ]
-FROM mcr.microsoft.com/dotnet/aspnet:5.0 AS final
+RUN dotnet publish -c Release -o /app --runtime linux-musl-x64 my-demo-app.csproj
+RUN chmod +x ./my-demo-app
+
+FROM mcr.microsoft.com/dotnet/runtime-deps:5.0-alpine AS final
 ARG ConnectionString=default_connection_string
 ENV ConnectionString=$ConnectionString
 
@@ -20,5 +22,11 @@ WORKDIR /app
 COPY --from=publish /app/entrypoint.sh .
 COPY --from=publish /app .
 COPY --from=publish /app/etc/ssl/openssl.cnf /etc/ssl/openssl.cnf
+
+RUN apk update && \
+    apk upgrade --no-cache --available && \
+    apk add icu-libs
+
+ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=false    
 
 ENTRYPOINT ./entrypoint.sh $ConnectionString

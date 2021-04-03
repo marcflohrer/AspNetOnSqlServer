@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace app.Models.ManageViewModels
+namespace MyDemoApp.Models.ManageViewModels
 {
     public class DisplayRecoveryCodesViewModel
     {

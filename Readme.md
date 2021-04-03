@@ -31,7 +31,7 @@
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
-  <h3 align="center">SQL Server on Linux + ASP.NET 5.0 app demo</h3>
+  <h3 align="center">SQL Server on Linux + ASP.NET 5.0 my-demo-app demo</h3>
 
   <p align="center">
     <br />

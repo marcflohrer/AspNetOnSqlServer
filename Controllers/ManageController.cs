@@ -1,8 +1,8 @@
 using System.Linq;
 using System.Threading.Tasks;
-using app.Models;
-using app.Models.ManageViewModels;
-using app.Services;
+using MyDemoApp.Models;
+using MyDemoApp.Models.ManageViewModels;
+using MyDemoApp.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
