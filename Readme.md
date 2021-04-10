@@ -123,10 +123,16 @@ You need docker and docker-compose on the machine where you want to run the appl
    brew install docker docker-compose docker-machine xhyve docker-machine-driver-xhyve
    ```
 
-3. Start the app:
+3. Go into ```src/``` folder then setup database:
+
+    ```sh
+    start-dbmigrating.sh
+    ```
+
+4. Start the app:
 
    ```sh
    startup-app.sh
    ```
   
-4. Open [http://localhost](http://localhost) in any browser.
+5. Open [http://localhost](http://localhost) in any browser.
