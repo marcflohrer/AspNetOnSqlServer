@@ -67,13 +67,13 @@ When starting a new side project this boiler plate code takes unnecessarily a lo
 
 This section lists major frameworks and projects that were used:
 
+* [Best-README-Template](https://github.com/othneildrew/Best-README-Template)
 * [docker-compose](https://docs.docker.com/compose/)
 * [docker](https://docs.docker.com/)
 * [Asp.net](https://dotnet.microsoft.com/apps/aspnet)
 * [SQL Server on Linux](https://docs.microsoft.com/en-us/sql/linux/sql-server-linux-overview?view=sql-server-ver15)
 * [aspnetcore/src/Identity/samples/IdentitySample.Mvc/](https://github.com/dotnet/aspnetcore/tree/main/src/Identity/samples/IdentitySample.Mvc)
 * [EntityFramework Core](https://docs.microsoft.com/en-us/ef/core/)
-* [HTML Agility Pack](https://github.com/zzzprojects/html-agility-pack)
 
 <!-- GETTING STARTED -->
 ## Getting Started
