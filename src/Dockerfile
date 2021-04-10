@@ -10,7 +10,7 @@ FROM build AS publish
 RUN dotnet publish -c Release -o /app --runtime linux-musl-x64 my-demo-app.csproj
 RUN chmod +x ./my-demo-app
 
-FROM mcr.microsoft.com/dotnet/runtime-deps:5.0-alpine AS final
+FROM mcr.microsoft.com/dotnet/runtime-deps:5.0-alpine@sha256:cf1efcd5bd6b6214e77b7705e93e9fb7e5e83e0a591bf6196381520788cbdf27 AS final
 ARG ConnectionString=default_connection_string
 ENV ConnectionString=$ConnectionString
 
