@@ -46,7 +46,7 @@ done
 >&2 echo "Running entrypoint.sh :: SQL IS RUNNING !!!!!!!11!!!!!"
 >&2 echo "!!!11!!!!!!11!!!!!!11!!!!!!11!!!!!!11!!!1!!!!!!11!!!!!"
 
->&2 echo "SQL Server is up - starting my-demo-app next..."
+>&2 echo "Migration is done. Close the container using key stroke CTRL+Z..."
 until dotnet my-demo-app.dll; do
 >&2 echo "Starting up my-demo-app..."
 sleep 1
