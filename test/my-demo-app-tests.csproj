@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <RootNamespace>stiebel_eltron_apiserver_tests</RootNamespace>
+    <RootNamespace>my_demo_app_tests</RootNamespace>
 
     <IsPackable>false</IsPackable>
   </PropertyGroup>
