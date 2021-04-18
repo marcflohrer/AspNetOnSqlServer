@@ -11,7 +11,7 @@ apk update && apk add wget && \
   apk add libgdiplus --repository https://dl-3.alpinelinux.org/alpine/edge/testing/ && \
   wget https://dot.net/v1/dotnet-install.sh && \
   chmod +x ./dotnet-install.sh && \
-  /bin/bash -c "./dotnet-install.sh -c 5.0" && \
+  /bin/bash -c "./dotnet-install.sh -c 5.0" > /dev/null && \
   export PATH="$PATH:/root/.dotnet/" && \
   cd /root/.dotnet/ && \
   chmod +x dotnet && \
