@@ -33,7 +33,8 @@ namespace MyDemoApp
         public void ConfigureServices(IServiceCollection services)
         {
             var connection = Configuration.GetConnectionString("DefaultConnection") ?? Configuration["DefaultConnection"];
-            if(connection == null){
+            if (string.IsNullOrWhiteSpace(connection))
+            {
                 throw new Exception("Database connetion is not set.");
             }
             // Add framework services.
@@ -45,6 +46,9 @@ namespace MyDemoApp
                 options.UseSqlServer(connection));
 
             services.AddMvc();
+            services
+                .AddHostedService<ApplicationLifetimeService>()
+                .Configure<HostOptions>(opts => opts.ShutdownTimeout = TimeSpan.FromSeconds(45));
 
             services.AddIdentityCore<ApplicationUser>()
                 .AddRoles<IdentityRole>()
