@@ -1,4 +1,5 @@
 using MyDemoApp.Models;
+using MyDemoApp.Repositories;
 using MyDemoApp.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -9,6 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using System;
+using MyDemoApp.Extensions;
 
 namespace MyDemoApp
 {
@@ -35,8 +37,12 @@ namespace MyDemoApp
                 throw new Exception("Database connetion is not set.");
             }
             // Add framework services.
-            services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            // DbContext pooling: AddDbContextPool enables pooling of DbContext instances. 
+            // Context pooling can increase throughput in high-scale scenarios such as web servers by reusing context instances, 
+            // rather than creating new instances for each request.
+            services.AddDbContextPool<ApplicationDbContext>(options =>
+                options.UseSqlServer(connection));
 
             services.AddMvc();
 
