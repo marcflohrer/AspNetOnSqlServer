@@ -3,8 +3,10 @@
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
     <UserSecretsId>d1e11783-8483-409b-956e-0f20d5dff1b4</UserSecretsId>
+    <RootNamespace>MyDemoApp</RootNamespace>
   </PropertyGroup>
 
+  <PropertyGroup Condition=" '$(RunConfiguration)' == 'my-demo-app' " />
   <ItemGroup>
     <None Remove="mssql\.DS_Store" />
     <None Remove="mssql\logs\log_3.trc" />
@@ -58,7 +60,9 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.5" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.5"><IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+<PrivateAssets>all</PrivateAssets>
+</PackageReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="my-demo-app-tests\UnitTest1.cs" />
