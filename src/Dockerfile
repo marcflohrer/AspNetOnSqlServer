@@ -2,10 +2,12 @@ FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 ARG ConnectionString=default_connection_string
 ENV ConnectionString=$ConnectionString
 WORKDIR /app
+COPY my-demo-app.csproj .
+RUN dotnet restore --runtime linux-musl-x64 my-demo-app.csproj
 COPY . .
-RUN dotnet restore 
 RUN dotnet build --runtime linux-musl-x64 my-demo-app.csproj
 RUN chmod +x ./entrypoint.sh
+
 FROM build AS publish
 RUN dotnet publish -c Release -o /app --runtime linux-musl-x64 my-demo-app.csproj
 RUN chmod +x ./my-demo-app

@@ -3,7 +3,7 @@ services:
     web:
         build:
             args:
-                ConnectionString: "${DatabaseConnectionString};"     
+                ConnectionString: "${DatabaseConnectionString};" 
             context: .      
         ports:
             - "80:6003"
