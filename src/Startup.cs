@@ -1,5 +1,4 @@
 using MyDemoApp.Models;
-using MyDemoApp.Repositories;
 using MyDemoApp.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -10,7 +9,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using System;
-using MyDemoApp.Extensions;
 
 namespace MyDemoApp
 {
