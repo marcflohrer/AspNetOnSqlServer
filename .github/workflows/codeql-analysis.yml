@@ -10,6 +10,11 @@ jobs:
   analyze:
     name: CodeQL Analysis
     runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        language: [ 'csharp' ]    
+    
     steps:
       - name: Checkout repository
         id: checkout_repo
@@ -17,7 +22,7 @@ jobs:
 
       - name: Initialize CodeQL
         id: init_codeql
-        uses: github/codeql-action/init@v1
+        uses: github/codeql-action/init@v1        
         with:
           queries: security-and-quality
 
