@@ -1,5 +1,5 @@
 /*
-Copyright 2021 Microsoft Ireland Operations Limited
+Copyright (c) .NET Foundation and Contributors
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -23,6 +23,7 @@ This notice is intended to comply with the Apache Licence 2. 0 section 4.b. that
  b. You must cause any modified files to carry prominent notices stating that You changed the files; and
  "
 */
+
 using System.Linq;
 using System.Threading.Tasks;
 using MyDemoApp.Models;
@@ -198,7 +199,7 @@ namespace apps.Controllers
         [HttpGet]
         public async Task<IActionResult> VerifyPhoneNumber(string phoneNumber)
         {
-            await _userManager.GenerateChangePhoneNumberTokenAsync(await GetCurrentUserAsync(), phoneNumber);
+            var code = await _userManager.GenerateChangePhoneNumberTokenAsync(await GetCurrentUserAsync(), phoneNumber);
             // Send an SMS to verify the phone number
             return phoneNumber == null ? View("Error") : View(new VerifyPhoneNumberViewModel { PhoneNumber = phoneNumber });
         }

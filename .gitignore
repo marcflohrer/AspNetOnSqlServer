@@ -35,3 +35,4 @@ msbuild.wrn
 mssql/
 
 .env
+src/web/root/.aspnet/DataProtection-Keys

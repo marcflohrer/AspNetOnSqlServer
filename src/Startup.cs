@@ -1,5 +1,5 @@
 /*
-Copyright 2021 Microsoft Ireland Operations Limited
+Copyright (c) .NET Foundation and Contributors
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -60,7 +60,6 @@ namespace MyDemoApp
             {
                 throw new Exception("Database connetion is not set.");
             }
-            // Add framework services.
 
             // DbContext pooling: AddDbContextPool enables pooling of DbContext instances. 
             // Context pooling can increase throughput in high-scale scenarios such as web servers by reusing context instances, 
@@ -103,6 +102,7 @@ namespace MyDemoApp
                 app.UseExceptionHandler("/Home/Error");
             }
 
+            app.UseDefaultFiles();
             app.UseStaticFiles();
 
             app.UseRouting();

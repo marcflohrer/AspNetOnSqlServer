@@ -72,8 +72,14 @@ This section lists major frameworks and projects that were used:
 * [docker](https://docs.docker.com/)
 * [Asp.net](https://dotnet.microsoft.com/apps/aspnet)
 * [SQL Server on Linux](https://docs.microsoft.com/en-us/sql/linux/sql-server-linux-overview?view=sql-server-ver15)
-* [aspnetcore/src/Identity/samples/IdentitySample.Mvc/](https://github.com/dotnet/aspnetcore/tree/main/src/Identity/samples/IdentitySample.Mvc) that is [licensed under Apache 2.0](legal/aspnetcore/LICENSE)
+* [aspnetcore/src/Identity/samples/IdentitySample.Mvc/](https://github.com/dotnet/aspnetcore/tree/main/src/Identity/samples/IdentitySample.Mvc) that is [licensed under Apache 2.0](legal/aspnetcore/LICENSE) (Notice: Some files are changed.)
 * [EntityFramework Core](https://docs.microsoft.com/en-us/ef/core/)
+* [xunit/xunit](https://github.com/xunit/xunit)
+* [aspnet/Identity](https://github.com/aspnet/Identity)
+* [dotnet/efcore](https://github.com/dotnet/efcore)
+* [AutoFixture/AutoFixture](https://github.com/AutoFixture/AutoFixture)
+* [microsoft/vstest](https://github.com/microsoft/vstest)
+* [xunit/visualstudio.xunit](https://github.com/xunit/visualstudio.xunit)
 
 <!-- GETTING STARTED -->
 ## Getting Started
@@ -123,16 +129,10 @@ You need docker and docker-compose on the machine where you want to run the appl
    brew install docker docker-compose docker-machine xhyve docker-machine-driver-xhyve
    ```
 
-3. Go into ```src/``` folder then setup database:
-
-    ```sh
-    start-dbmigrating.sh
-    ```
-
-4. Start the app:
+3. Start the app:
 
    ```sh
    startup-app.sh
    ```
   
-5. Open [http://localhost](http://localhost) in any browser.
+4. Open [http://localhost](http://localhost) in any browser.
