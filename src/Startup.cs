@@ -58,7 +58,7 @@ namespace MyDemoApp
             var connection = Configuration.GetConnectionString("DefaultConnection") ?? Configuration["DefaultConnection"];
             if (string.IsNullOrWhiteSpace(connection))
             {
-                throw new Exception("Database connetion is not set.");
+                throw new Exception("Database connection is not set.");
             }
 
             // DbContext pooling: AddDbContextPool enables pooling of DbContext instances. 

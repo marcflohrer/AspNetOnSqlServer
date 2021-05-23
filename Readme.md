@@ -113,7 +113,13 @@ To reverse engineer the database structure run
 
 You need docker and docker-compose on the machine where you want to run the application:
 
+* git
 * docker
+* docker-compose
+* [dotnet 5.0](https://dotnet.microsoft.com/download/dotnet/5.0)
+* either [armv7](https://en.wikipedia.org/wiki/ARM_architecture)+ && [ubuntu 20.04](https://ubuntu.com/download/desktop?version=20.04&architecture=amd64)
+* or x64 && (mac || linux)
+* 1 GB of RAM
 
 ### Installation
 
@@ -122,17 +128,62 @@ You need docker and docker-compose on the machine where you want to run the appl
    ```sh
    git clone https://github.com/your_username_/Project-Name.git
    ```
+   
+2. Put a .env file in the **src** folder with the data that match your environment:
 
-2. Install docker:
+   ```sh
+   cd /my-demo-app/src
+   touch .env
+   echo 'DatabasePassword="YourStr0ngP@ssword!"' >> .env
+   echo 'DatabaseConnectionString="Server=db;Database=master;User=sa;Password=YourStr0ngP@ssword!;"'  >> .env
+   ```
+
+3. Install docker:
 
    ```sh
    brew install docker docker-compose docker-machine xhyve docker-machine-driver-xhyve
    ```
 
-3. Start the app:
+   or on linux
+
+   ```
+   curl -fsSL https://get.docker.com -o get-docker.sh
+   sh get-docker.sh
+   sudo usermod -aG docker $USER
+   sudo reboot
+   ssh user@191.XXX.XXX.YY
+   sudo chown root:docker /var/run/docker.sock
+   sudo apt-get install libffi-dev libssl-dev
+   sudo apt install python3-dev
+   sudo apt-get install -y python3 python3-pip
+   sudo pip3 install docker-compose 
+   ```
+
+4. To install dotnet on linux run execute the following commands from the $HOME directory of the user you are logged in with. Check [https://dotnet.microsoft.com/download/dotnet/5.0](https://dotnet.microsoft.com/download/dotnet/5.0) for more recent versions of the dotnet sdk for the arm64 architecture.
 
    ```sh
-   startup-app.sh
+   wget https://download.visualstudio.microsoft.com/download/pr/af5f1e5b-d544-47af-b730-038e4258641b/bccb3982f5690134ab66748a5afc36c7/dotnet-sdk-5.0.203-linux-arm64.tar.gz
+   mkdir dotnet-64
+   tar zxf dotnet-sdk-5.0.203-linux-arm64.tar.gz -C $HOME/dotnet-64
+   export DOTNET_ROOT=$HOME/dotnet-64
+   export PATH=$HOME/dotnet-64:$PATH
+   echo  'export DOTNET_ROOT=$HOME/dotnet-64' >> ~/.bashrc 
+   echo  'export PATH=$HOME/dotnet-64:$PATH' >> ~/.bashrc 
+   sudo reboot
+   ssh user@191.XXX.XXX
+   dotnet --info
+   ```
+
+5. Before starting the app for the first time on a specific machine go to the **src** folder and run:
+
+   ```sh
+   ./start-dbmigrating.sh
+   ```
+
+6. Start the app:
+
+   ```sh
+   ./startup-app.sh &
    ```
   
-4. Open [http://localhost](http://localhost) in any browser.
+7. Wait 1 or 2 minutes and then open [http://localhost](http://localhost) in any browser to see the website.

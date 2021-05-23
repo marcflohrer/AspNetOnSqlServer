@@ -1,24 +1,26 @@
 version: "3.9"
 services:
-    gen:
+    web:
         build:
             args:
                 ConnectionString: "${DatabaseConnectionString};"
             context: .
             dockerfile: Dockerfile_DbScaffold
+        container_name: "scaffold"             
         volumes:
             - ./Data/Generated:/app/DbModels:rw       
         depends_on:
             - db             
     db:
-        image: "mcr.microsoft.com/mssql/server:2019-latest"
+        image: "mcr.microsoft.com/azure-sql-edge:latest"
+        user: root        
+        container_name: "database"
+        restart: always      
         ports:
-            - "1433:1433" 
-            - "1434:1434" 
-            - "1431:1431"
+            - "1433:1433"       
         volumes:
-            - ./mssql/data:/var/opt/mssql/data:rw
-            - ./mssql/logs:/var/opt/mssql/log:rw
+            - ./data/mssql/data/:/var/opt/mssql/data
         environment:
-            SA_PASSWORD: ${DatabasePassword}
-            ACCEPT_EULA: "Y"
+            MSSQL_SA_PASSWORD: ${DatabasePassword}
+            ACCEPT_EULA: 1
+            MSSQL_PID: Developer

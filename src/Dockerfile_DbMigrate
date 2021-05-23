@@ -6,7 +6,6 @@ COPY my-demo-app.csproj .
 RUN dotnet restore
 COPY . .
 RUN dotnet build my-demo-app.csproj -c Release -o /app/build
-RUN chmod +x ./entrypoint_dbmigrate.sh
 
 FROM build AS publish
 RUN dotnet publish my-demo-app.csproj -c Release -o /app
@@ -20,4 +19,4 @@ COPY --from=publish /app/entrypoint_dbmigrate.sh .
 COPY --from=publish /app .
 COPY --from=publish /app/etc/ssl/openssl.cnf /etc/ssl/openssl.cnf
 
-ENTRYPOINT ./entrypoint_dbmigrate.sh ${ConnectionString}
+ENTRYPOINT bash ./entrypoint_dbmigrate.sh ${ConnectionString}

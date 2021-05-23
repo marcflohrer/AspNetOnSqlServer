@@ -3,6 +3,8 @@
 
 set -e
 
+mkdir -p mssql/data
+
 run_cmd="dotnet my-demo-app.dll"
 
 >&2 echo "!!!11!!!!!!11!!!!!!11!!!!!!11!!!!!!11!!!"

@@ -14,4 +14,4 @@ FROM publish AS final
 WORKDIR /app
 COPY --from=publish /app/entrypoint_dbscaffold.sh .
 COPY --from=publish /app .
-ENTRYPOINT ./entrypoint_dbscaffold.sh $ConnectionString
+ENTRYPOINT bash ./entrypoint_dbscaffold.sh $ConnectionString

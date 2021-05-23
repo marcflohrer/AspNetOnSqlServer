@@ -2,6 +2,8 @@
 #!/bin/bash
 set -ex
 
+mkdir -p mssql/data
+
 >&2 echo "!!!11!!!!!!11!!!!!!11!!!!!!11!!!!!!11!!!"
 >&2 echo "Running entrypoint.sh !!!11!!!!!!11!!!!!"
 >&2 echo "!!!11!!!!!!11!!!!!!11!!!!!!11!!!!!!11!!!"
@@ -13,7 +15,7 @@ until dotnet user-secrets init && dotnet user-secrets set ConnectionStrings:Defa
 sleep 1
 done
 
-./my-demo-app
+dotnet my-demo-app.dll
 
 >&2 echo "!!!11!!!!!!11!!!!!!11!!!!!!11!!!!!!11!!!1!!!!!!11!!!!!"
 >&2 echo "Running entrypoint.sh :: APP RUNNING !!!!!!!!!!11!!!!!"
