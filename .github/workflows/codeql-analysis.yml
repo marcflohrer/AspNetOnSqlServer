@@ -27,8 +27,11 @@ jobs:
           languages: ${{ matrix.language }}
           config-file: ./.github/codeql/codeql-config.yml
 
-      - name: Autobuild
-        uses: github/codeql-action/autobuild@v1
+      - run: |
+         cd src && dotnet build && cd ..
+
+      - run: |
+         cd test && dotnet test && cd ..       
 
       - name: Perform CodeQL Analysis
         id: analyze_codeql
