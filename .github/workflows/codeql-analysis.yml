@@ -1,13 +1,13 @@
 name: CodeQL Analysis
 
-env:
-  DOTNET_VERSION: 6.0.100
-
 on:
   push:
   pull_request:
   schedule:
     - cron: '0 8 * * *'
+
+env:
+  DOTNET_VERSION: 6.0.100-preview.5.21302.13
 
 jobs:
   analyze:
