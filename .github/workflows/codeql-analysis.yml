@@ -28,15 +28,15 @@ jobs:
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }}
 
+      - run: dotnet build
+      - run: dotnet test
+
       - name: Initialize CodeQL
         id: init_codeql
         uses: github/codeql-action/init@v1
         with:
           languages: ${{ matrix.language }}
           config-file: ./.github/codeql/codeql-config.yml
-
-      - name: Autobuild
-        uses: github/codeql-action/autobuild@v1
 
       - name: Perform CodeQL Analysis
         id: analyze_codeql
