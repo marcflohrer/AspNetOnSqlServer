@@ -6,9 +6,6 @@ on:
   schedule:
     - cron: '0 8 * * *'
 
-env:
-  DOTNET_VERSION: 6.0.100
-
 jobs:
   analyze:
     name: CodeQL Analysis
@@ -23,11 +20,12 @@ jobs:
         id: checkout_repo
         uses: actions/checkout@v2
 
-      - name: Use .NET Core ${{ env.DOTNET_VERSION }}
+      - name: Use .NET Core 6.0.100
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: ${{ env.DOTNET_VERSION }}
+          dotnet-version: '6.0.100'
 
+      - run: dotnet --version
       - run: dotnet build
       - run: dotnet test
 
