@@ -45,21 +45,21 @@
 		<None Remove="mssql\data\msdblog.ldf" />
 		<None Remove="etc\ssl\openssl.cnf" />
 		<None Remove="my-demo-app.db" />
-		<None Remove="my-demo-app-tests\obj\Debug\net5.0\my-demo-app-tests.csprojAssemblyReference.cache" />
+		<None Remove="my-demo-app-tests\obj\Debug\net6.0\my-demo-app-tests.csprojAssemblyReference.cache" />
 		<None Remove="my-demo-app-tests\obj\my-demo-app-tests.csproj.nuget.g.props" />
 		<None Remove="my-demo-app-tests\obj\my-demo-app-tests.csproj.nuget.g.targets" />
 		<None Remove="my-demo-app-tests\obj\project.nuget.cache" />
-		<None Remove="my-demo-app-tests\obj\Debug\net5.0\my-demo-app-tests.assets.cache" />
+		<None Remove="my-demo-app-tests\obj\Debug\net6.0\my-demo-app-tests.assets.cache" />
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.0" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.0" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.0">
+		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.1" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.1" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.1">
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 			<PrivateAssets>all</PrivateAssets>
 		</PackageReference>
-		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.0" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.0">
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.1" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.1">
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 			<PrivateAssets>all</PrivateAssets>
 		</PackageReference>
