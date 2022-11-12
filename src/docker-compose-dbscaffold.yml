@@ -6,18 +6,18 @@ services:
                 ConnectionString: "${DatabaseConnectionString};"
             context: .
             dockerfile: Dockerfile_DbScaffold
-        container_name: "scaffold"             
+        container_name: "scaffold"
         volumes:
-            - ./Data/Generated:/app/DbModels:rw       
+            - ./Data/Generated:/app/DbModels:rw
         depends_on:
-            - db             
+            - db
     db:
         image: "mcr.microsoft.com/azure-sql-edge:latest"
         user: root        
         container_name: "database"
-        restart: always      
+        restart: always
         ports:
-            - "1433:1433"       
+            - "1433:1433"
         volumes:
             - ./data/mssql/data/:/var/opt/mssql/data
         environment:

@@ -5,23 +5,23 @@ services:
             args:
                 ConnectionString: "${DatabaseConnectionString};"
             context: .
-            dockerfile: Dockerfile_DbMigrate    
-        container_name: "migration"    
+            dockerfile: Dockerfile_DbMigrate
+        container_name: "migration"
         ports:
             - "80:6003"
             - "443:6004"
         volumes:
-            - ./web/root/.aspnet/DataProtection-Keys:/root/.aspnet/DataProtection-Keys:rw    
-            - ./Data/Migrations:/app/Data/Migrations:rw          
+            - ./web/root/.aspnet/DataProtection-Keys:/root/.aspnet/DataProtection-Keys:rw
+            - ./Data/Migrations:/app/Data/Migrations:rw
         depends_on:
             - db
     db:
         image: "mcr.microsoft.com/azure-sql-edge:latest"
         user: root        
         container_name: "database"
-        restart: always        
+        restart: always
         ports:
-            - "1433:1433"               
+            - "1433:1433"
         volumes:
             - ./data/mssql/data/:/var/opt/mssql/data
         environment:

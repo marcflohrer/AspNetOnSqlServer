@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
+FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 ARG ConnectionString=default_connection_string
 ENV ConnectionString=$ConnectionString
 WORKDIR /app
@@ -10,7 +10,7 @@ RUN dotnet build my-demo-app.csproj
 FROM build AS publish
 RUN dotnet publish -c Release -o /app my-demo-app.csproj
 
-FROM mcr.microsoft.com/dotnet/sdk:5.0 AS final
+FROM mcr.microsoft.com/dotnet/sdk:7.0 AS final
 ARG ConnectionString=default_connection_string
 ENV ConnectionString=$ConnectionString
 
